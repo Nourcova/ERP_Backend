@@ -85,7 +85,7 @@ Route::group(['middleware' => ['jwt.verify']], function () {
 
 //Admins Routes
 Route::group(['prefix' => 'admins'], function () {
-    Route::get('/', [AdminController::class, 'getAllAdmins'])->middleware('cors');
+    Route::get('/', [AdminController::class, 'getAllAdmins']);
     Route::post('register', [AdminController::class, 'register']);
     Route::post('login', [AdminController::class, 'authenticate']);
     Route::get('/{id}', [AdminController::class, 'getAdmin']);
