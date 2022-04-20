@@ -61,8 +61,6 @@ Route::group(['middleware' => ['jwt.verify']], function () {
         Route::get('/validKPIS/{id}', [EmployeeController::class, 'reportsKpisValid']);
         Route::get('/groupKpi/{id}', [EmployeeController::class, 'reportsGroupKpis']);
         Route::get('/reportProject/{id}', [EmployeeController::class, 'reportsProject']);
-
-
     });
 
 
@@ -83,20 +81,19 @@ Route::group(['middleware' => ['jwt.verify']], function () {
         Route::post('/', [RoleController::class, 'add']);
         Route::delete('/{id}', [RoleController::class, 'delete']);
     });
-    
 });
 
 //Admins Routes
 Route::group(['prefix' => 'admins'], function () {
-    Route::get('/', [AdminController::class, 'getAllAdmins']);
-    Route::post('register',[AdminController::class, 'register']);
-    Route::post('login',[AdminController::class, 'authenticate']);
-     Route::get('/{id}', [AdminController::class, 'getAdmin']);
+    Route::get('/', [AdminController::class, 'getAllAdmins'])->middleware('cors');
+    Route::post('register', [AdminController::class, 'register']);
+    Route::post('login', [AdminController::class, 'authenticate']);
+    Route::get('/{id}', [AdminController::class, 'getAdmin']);
     Route::post('/', [AdminController::class, 'addAdmin']);
     Route::delete('/{id}', [AdminController::class, 'deleteAdmin']);
     Route::post('/{id}', [AdminController::class, 'updateAdmin']);
     Route::post('/image/{id}', [AdminController::class, 'updateImageAdmin']);
- });
+});
 
 
 //Login Route
