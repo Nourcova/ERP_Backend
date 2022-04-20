@@ -52,7 +52,7 @@ Route::group(['middleware' => ['jwt.verify']], function () {
 
     //Employees Routes
     Route::group(['prefix' => 'employees'], function () {
-        Route::get('/', [EmployeeController::class, 'getAllEmployees']);
+        Route::get('/', [EmployeeController::class, 'getAllEmployees'])->middleware('cors');
         Route::post('/', [EmployeeController::class, 'addEmployee']);
         Route::get('/{id}', [EmployeeController::class, 'getEmployeeById']);
         Route::delete('/{id}', [EmployeeController::class, 'deleteEmployee']);
